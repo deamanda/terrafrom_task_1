@@ -24,7 +24,7 @@ resource "aws_internet_gateway" "cmtr-otuokx4e-01-igw" {
   vpc_id = aws_vpc.vpc.id
 }
 
-resource "aws_default_route_table" "route_table" {
+resource "aws_route_table" "cmtr-otuokx4e-01-rt" {
   default_route_table_id = aws_vpc.vpc.default_route_table_id
 
   route {
