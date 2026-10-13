@@ -1,27 +1,46 @@
 resource "aws_vpc" "cmtr-otuokx4e-01-vpc" {
   cidr_block = var.vpc_cidr
+
+  tags = {
+    Name = "cmtr-otuokx4e-01-vpc"
+  }
 }
 
 resource "aws_subnet" "cmtr-otuokx4e-01-subnet-public-a" {
   availability_zone = var.availability_zone1
   cidr_block        = var.subnet1_cidr
   vpc_id            = aws_vpc.cmtr-otuokx4e-01-vpc.id
+  tags = {
+    Name = "cmtr-otuokx4e-01-subnet-public-a"
+  }
 }
 
 resource "aws_subnet" "cmtr-otuokx4e-01-subnet-public-b" {
   availability_zone = var.availability_zone2
   cidr_block        = var.subnet2_cidr
   vpc_id            = aws_vpc.cmtr-otuokx4e-01-vpc.id
+
+  tags = {
+    Name = "cmtr-otuokx4e-01-subnet-public-b"
+  }
 }
 
 resource "aws_subnet" "cmtr-otuokx4e-01-subnet-public-c" {
   availability_zone = var.availability_zone3
   cidr_block        = var.subnet3_cidr
   vpc_id            = aws_vpc.cmtr-otuokx4e-01-vpc.id
+
+  tags = {
+    Name = "cmtr-otuokx4e-01-subnet-public-c"
+  }
 }
 
 resource "aws_internet_gateway" "cmtr-otuokx4e-01-igw" {
   vpc_id = aws_vpc.cmtr-otuokx4e-01-vpc.id
+
+  tags = {
+    Name = "cmtr-otuokx4e-01-igw"
+  }
 }
 
 resource "aws_route_table" "cmtr-otuokx4e-01-rt" {
@@ -30,6 +49,9 @@ resource "aws_route_table" "cmtr-otuokx4e-01-rt" {
   route {
     cidr_block = "0.0.0.0/0"
     gateway_id = aws_internet_gateway.cmtr-otuokx4e-01-igw.id
+  }
+  tags = {
+    Name = "cmtr-otuokx4e-01-rt"
   }
 }
 
