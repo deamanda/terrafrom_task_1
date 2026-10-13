@@ -25,7 +25,7 @@ resource "aws_internet_gateway" "cmtr-otuokx4e-01-igw" {
 }
 
 resource "aws_route_table" "cmtr-otuokx4e-01-rt" {
-  default_route_table_id = aws_vpc.vpc.default_route_table_id
+  vpc_id = aws_vpc.vpc.id
 
   route {
     cidr_block = var.subnet1_cidr
